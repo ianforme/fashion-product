@@ -48,7 +48,7 @@ def index_creation(sample_size=None):
         metadata=data.drop(columns=["mixed_embedding"]).to_dict(orient="records")
     )
     
-def retrieve(query_text, base_k=base_k):
+def retrieve(query_text, openai_api_key, base_k=base_k):
     print("Querying FAISS index...")
     text_model = SentenceTransformer(text_model_path)
     

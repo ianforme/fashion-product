@@ -24,7 +24,7 @@ search_clicked = st.button("Search")
 
 # Only retrieve data when the button is clicked
 if search_clicked and query and query != st.session_state.last_query:
-    st.session_state.df = retrieve(query)
+    st.session_state.df = retrieve(query, st.secrets["openai_api_key"])
     st.session_state.last_query = query
     
 df = st.session_state.df
