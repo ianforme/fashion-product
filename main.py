@@ -3,8 +3,6 @@ from embedding import *
 from config import *
 from index import *
 
-openai.api_key = openai_api_key
-
 def index_creation(sample_size=None):
     print("Preparing data...")
     data = prepare_data(data_path, cols_to_drop=cols_to_drop, sample_size=sample_size)

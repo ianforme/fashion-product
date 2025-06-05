@@ -5,6 +5,8 @@ import requests
 from io import BytesIO
 from main import *
 
+openai.api_key = st.secrets["openai_api_key"]
+
 st.set_page_config(page_title="Product Explorer", layout="wide")
 st.title("🛍️ Product Explorer")
 
