@@ -156,9 +156,12 @@ def query_faiss_index(
     relevant_images = []
     for i in tqdm(range(0, len(check_dict), 5)):
         batch_dict = {k: check_dict[k] for k in list(check_dict.keys())[i:i+5]}
-        relevant_images_batch = post_extraction_check(batch_dict, orig_query_text, openai_api_key)
-        if relevant_images_batch:
-            relevant_images.extend(relevant_images_batch)
+        try:
+            relevant_images_batch = post_extraction_check(batch_dict, orig_query_text, openai_api_key)
+            if relevant_images_batch:
+                relevant_images.extend(relevant_images_batch)
+        except Exception as e:
+            print(f"Batch {i} has issue from post extraction check: {e}")
             
     print(f"Found {len(relevant_images)} relevant images after post-extraction check.")
     print("Filtering and sorting results...")
